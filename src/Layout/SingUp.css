@@ -1,0 +1,28 @@
+.Formdiv{
+    width:50%;
+     display: flex;
+     border-collapse: collapse;
+     align-items: center;
+     justify-content: space-around;
+     padding: 80px 326px;
+    
+}
+  .fields{
+    margin-top: 83px;
+   text-align: center;
+   width: 100%;
+   padding: 10px 60px;
+   padding-bottom: 10px 60px;
+   margin: 10px 0;
+   display: inline-block;
+   
+   /* border-radius: 20px; */
+   box-sizing: border-box;
+  }
+  .headings{
+    padding: 20px 0px;
+
+    }
+  
+  
+  
