@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Paper,
@@ -7,32 +7,31 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { MdLibraryAddCheck } from "react-icons/md";
 // import {toast}   from "react-toastify";
 
- import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginCreate } from "../Redux/Action/Action";
 const Signin = () => {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   // let navigate = useNavigate();
- const dispatch = useDispatch()
- 
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.Reducer.status);
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#a35580" };
+  const avatarStyle = { backgroundColor: "#dd3290" };
   const handleLogin = (data) => {
-   
-   dispatch(LoginCreate(data)) 
-  }
+    dispatch(LoginCreate(data));
+  };
+
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>

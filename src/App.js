@@ -7,6 +7,7 @@ import Singup from "./Component/Singup";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer} from 'react-toastify';
 import Dashboard from "./Component/Dashboard";
+import PagenotFound from "./Component/PagenotFound";
 
 
 const App = () => {
@@ -25,10 +26,12 @@ const App = () => {
          <Routes>
           <Route path="/" element={<Singin />} />
           <Route path="/singup" element={<Singup/>} />
+          <Route path="*" element={<PagenotFound/>} />
         </Routes>
         </>
+         
         }
-        
+       
       </Router>
     </div>
   );

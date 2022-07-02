@@ -17,6 +17,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { RegisterCreate } from "../Redux/Action/Action";
 const Signup = () => {
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
@@ -24,16 +25,27 @@ const Signup = () => {
   const avatarStyle = { backgroundColor: "#426a9e" };
   // const marginTop = { marginTop: 5 };
 
-  
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
-  
-  const handleRegistration = (data) => {
-    dispatch(RegisterCreate(data))
+  // const [data, setdata] = useState([]);
+
+  const handleRegistration = (item) => {
+    var Data = JSON.parse(localStorage.getItem("register")) || [];
+    var isData =
+      Data.findIndex((x) => {
+        return x.email === item.email;
+      }) !== -1;
+    if (isData) {
+      toast.error("This Email number already exists!!");
+    } else {
+      dispatch(RegisterCreate(item));
+    }
+    reset()
   };
   return (
     <Grid>
@@ -141,3 +153,9 @@ const Signup = () => {
 };
 
 export default Signup;
+// if (checkContactEmailExists.length > 0) {
+//   return toast.error("This email already exists!!");
+// }
+// // if (checkContactPhoneExists.length > 0) {
+// //   return
+// // }
