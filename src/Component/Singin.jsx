@@ -12,8 +12,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { MdLibraryAddCheck } from "react-icons/md";
-// import {toast}   from "react-toastify";
-
 import { useDispatch, useSelector } from "react-redux";
 import { LoginCreate } from "../Redux/Action/Action";
 const Signin = () => {
@@ -21,15 +19,15 @@ const Signin = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
-  // let navigate = useNavigate();
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.Reducer.status);
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#dd3290" };
   const handleLogin = (data) => {
     dispatch(LoginCreate(data));
+    reset();
   };
 
   return (

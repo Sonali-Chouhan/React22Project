@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Paper,
@@ -16,7 +16,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 //import FormLabel from "@material-ui/core/FormLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { RegisterCreate } from "../Redux/Action/Action";
 const Signup = () => {
@@ -32,8 +32,8 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
-  // const [data, setdata] = useState([]);
-
+  const Register = useSelector(state => state.Reducer.create)
+  console.log("dd",Register)
   const handleRegistration = (item) => {
     var Data = JSON.parse(localStorage.getItem("register")) || [];
     var isData =
@@ -47,6 +47,12 @@ const Signup = () => {
     }
     reset()
   };
+  useEffect(() => {
+    if(Register){
+      toast.success("User Successfully Registered................")
+    }
+   
+  }, [Register])
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
