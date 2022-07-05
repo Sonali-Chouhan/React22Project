@@ -7,21 +7,25 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { MdLibraryAddCheck } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginCreate } from "../Redux/Action/Action";
+import { toast } from "react-toastify";
 const Signin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const state = useSelector((state) => state?.Reducer?.message);
+  console.log("DD", state);
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#dd3290" };
@@ -29,6 +33,13 @@ const Signin = () => {
     dispatch(LoginCreate(data));
     reset();
   };
+  useEffect(() => {
+    if (state === true) {
+      toast.success("User_Singin ......");
+      // navigate("/dashboard")
+      window.location.href = "/dashboard";
+    }
+  }, [state]);
 
   return (
     <Grid>

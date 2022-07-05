@@ -40,3 +40,19 @@
   color: crimson;
   
 }
+.search{
+  display: inline-block;
+    float: right;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 5vh;
+  
+}
+.buttonElement {
+ 
+    margin: 0 10px;
+    border: 2px solid red;
+    background-color: aqua;
+    border-radius: 10px;
+  }
+

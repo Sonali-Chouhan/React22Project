@@ -19,10 +19,12 @@ const Reducer = (state = initialState, action) => {
       localStorage.setItem("register", JSON.stringify(data));
       return {
         ...state,
-        Register: [...state.Register_user],
+        Register_user: [...data],
         create:action.payload
       };
     case lOGIN_USER_UP:
+      var Token,message
+      
       const object = localStorage.getItem("register");
       var record = JSON.parse(object);
       record?.forEach((element) => {
@@ -30,20 +32,26 @@ const Reducer = (state = initialState, action) => {
           element.password === action.payload.password &&
           element.email === action.payload.email
         ) {
-          const Token = "gsadhy3724351/323knmds./309023473247";
-          localStorage.setItem("token", JSON.stringify(Token));
+           Token = "gsadhy3724351/323knmds./309023473247";
+           localStorage.setItem("token", JSON.stringify(Token));
+           message = true;
         }
       });
       return {
         ...state,
+        message:message 
+        
       };
     case DELETE_USER_UP:
+     
+
       let Delete = JSON.parse(localStorage.getItem("register"));
       Delete.splice(action.payload, 1);
       localStorage.setItem("register", JSON.stringify(Delete));
       return {
         ...state,
-        user:[...Delete] ,
+        Register_user:[...Delete],
+        delete:Delete
       };
     case EDIT_USER_UP:
       let alldata = JSON.parse(localStorage.getItem("register"));
@@ -57,10 +65,12 @@ const Reducer = (state = initialState, action) => {
     case UPDATE_USER_UP:
       const Update=JSON.parse(localStorage.getItem("register"));
       const Updatedata=action.payload
-       Update.splice(action.payload.id,1,Updatedata);
+      Update.splice(action.payload.id,1,Updatedata);
        localStorage.setItem("register", JSON.stringify(Update));
       return {
         ...state,
+        Register_user:Update,
+        Updatedata:Update
       };
     default:
       return state;

@@ -16,7 +16,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 //import FormLabel from "@material-ui/core/FormLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { RegisterCreate } from "../Redux/Action/Action";
 const Signup = () => {
@@ -32,8 +32,8 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
-  const Register = useSelector(state => state.Reducer.create)
-  console.log("dd",Register)
+  const Register = useSelector((state) => state.Reducer.create);
+  console.log("dd", Register);
   const handleRegistration = (item) => {
     var Data = JSON.parse(localStorage.getItem("register")) || [];
     var isData =
@@ -45,14 +45,13 @@ const Signup = () => {
     } else {
       dispatch(RegisterCreate(item));
     }
-    reset()
+    reset();
   };
   useEffect(() => {
-    if(Register){
-      toast.success("User Successfully Registered................")
+    if (Register) {
+      toast.success("User Successfully Registered................");
     }
-   
-  }, [Register])
+  }, [Register]);
   return (
     <Grid>
       <Paper elevation={20} style={paperStyle}>
@@ -159,9 +158,3 @@ const Signup = () => {
 };
 
 export default Signup;
-// if (checkContactEmailExists.length > 0) {
-//   return toast.error("This email already exists!!");
-// }
-// // if (checkContactPhoneExists.length > 0) {
-// //   return
-// // }
