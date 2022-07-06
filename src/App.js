@@ -1,4 +1,4 @@
-import React, { Suspense,useEffect } from "react";
+ import React, { Suspense,useEffect } from "react";
 import "./App.css";
 import "./Layout/Home.css";
 import { BrowserRouter as Router, Routes, Route,useLocation,useNavigate } from "react-router-dom";
@@ -19,12 +19,12 @@ const App = () => {
   const { pathname } = useLocation();
   const isAuth = useSelector((state) => state?.Reducer?.isAuth);
   useEffect(() => {
-    if (isAuth && pathname == "/") {
+    if (isAuth && pathname === "/") {
       navigate("/dashboard");
-    } else if(!isAuth && pathname == "/dashboard") {
+    } else if(!isAuth && pathname === "/dashboard") {
       navigate('/');
     }
-    else if(!isAuth && pathname == "/userlist") {
+    else if(!isAuth && pathname === "/userlist") {
       navigate('/');
     }
     else{
@@ -62,4 +62,5 @@ const App = () => {
 };
 
 export default App;
+
 

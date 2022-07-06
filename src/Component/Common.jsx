@@ -12,7 +12,6 @@ import { MdDashboard } from "react-icons/md";
 import { ImTable2 } from "react-icons/im";
 import { SiAboutdotme } from "react-icons/si";
 import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { LogoutUser } from "../Redux/Action/Action";
 
@@ -20,7 +19,9 @@ const drawerWidth = 240;
 const Common = () => {
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(LogoutUser());
+    dispatch(LogoutUser())
+    
+    
   };
   return (
     <div>

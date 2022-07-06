@@ -100,7 +100,7 @@ const Usertable = () => {
           />
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
-              <TableHead style={{ backgroundColor: "#3b67b4" }}>
+              <TableHead style={{ backgroundColor: "#66b3ff" }}>
                 <TableRow>
                   <TableCell>#</TableCell>
                   <TableCell align="right">Name</TableCell>
