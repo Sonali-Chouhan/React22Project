@@ -23,7 +23,6 @@ const Signin = () => {
     reset,
   } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const state = useSelector((state) => state?.Reducer?.message);
   console.log("DD", state);
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
@@ -32,15 +31,17 @@ const Signin = () => {
   const handleLogin = (data) => {
     dispatch(LoginCreate(data));
     reset();
+    
   };
-  useEffect(() => {
-    if (state === true) {
-      toast.success("User_Singin ......");
-    }
-    // else if(state===false){
-    //   toast.error("Please Register Your Email.........")
-    // }
-  }, [state]);
+  // useEffect(() => {
+  //   if (state === true) {
+  //     toast.success("User_Singin ......");
+  //   }
+    
+  //   // else if(state===false){
+  //   //   toast.error("Please Register Your Email.........")
+  //   // }
+  // }, [state]);
 
   return (
     <Grid>

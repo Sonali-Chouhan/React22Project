@@ -65,15 +65,17 @@ const Usertable = () => {
   }, [state?.isEdit, state?.Register_user]);
 
   useEffect(() => {
-    const data = state?.Updatedata;
-    if (data) {
-      toast.success("User-Updated............:)");
-    }
     const del = state?.delete;
     if (del) {
       toast.error("Remove_User .........");
     }
-  }, [state?.Updatedata, state?.delete]);
+  }, [state?.delete]);
+  useEffect(() => {
+    const data = state?.Updatedata;
+    if (data) {
+      toast.success("User-Updated............:)");
+    }
+  }, [state?.Updatedata]);
   return (
     <div>
       <Box sx={{ display: "flex" }}>

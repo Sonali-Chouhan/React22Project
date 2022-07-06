@@ -24,6 +24,9 @@ const App = () => {
     } else if(!isAuth && pathname == "/dashboard") {
       navigate('/');
     }
+    else if(!isAuth && pathname == "/userlist") {
+      navigate('/');
+    }
     else{
       navigate(pathname);
     }
