@@ -7,4 +7,6 @@ export const DELETE_USER_UP="DELETE_USER_UP";
 export const EDIT_USER="EDIT_USER";
 export const EDIT_USER_UP="EDIT_USER_UP";
 export const UPDATE_USER="UPDATE_USER";
-export const UPDATE_USER_UP="UPDATE_USER_UP"
+export const UPDATE_USER_UP="UPDATE_USER_UP";
+export const LOGOUT_USER_UP="LOGOUT_USER_UP";
+export const LOGOUT_USER="LOGOUT_USER";

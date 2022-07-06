@@ -2,6 +2,7 @@ import {
   DELETE_USER_UP,
   EDIT_USER_UP,
   lOGIN_USER_UP,
+  LOGOUT_USER_UP,
   REGISTER_USER_UP,
   UPDATE_USER_UP,
 } from "../Actiontype";
@@ -10,6 +11,8 @@ const initialState = {
   Register_user: localStorage.getItem("register")
     ? JSON.parse(localStorage.getItem("register"))
     : [],
+    isAuth: localStorage.getItem("token") ?  localStorage.getItem("token") : false
+
 };
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -36,9 +39,13 @@ const Reducer = (state = initialState, action) => {
            localStorage.setItem("token", JSON.stringify(Token));
            message = true;
         }
+        // else if(! element.password=== action.payload.password && !element.email===action.payload.email){
+        //   message=false;
+        // }
       });
       return {
         ...state,
+        isAuth:Token,
         message:message 
         
       };
@@ -72,6 +79,12 @@ const Reducer = (state = initialState, action) => {
         Register_user:Update,
         Updatedata:Update
       };
+    case LOGOUT_USER_UP:
+      localStorage.removeItem('token')
+        return{
+          ...state,
+          isAuth:false 
+        }
     default:
       return state;
   }

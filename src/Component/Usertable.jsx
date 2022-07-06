@@ -23,8 +23,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "react-toastify";
 const Usertable = () => {
-  // const Item = localStorage.getItem("register");
-  // const rows = JSON.parse(Item);
+
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const { register, handleSubmit, setValue, reset } = useForm();

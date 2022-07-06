@@ -36,9 +36,10 @@ const Signin = () => {
   useEffect(() => {
     if (state === true) {
       toast.success("User_Singin ......");
-      // navigate("/dashboard")
-      window.location.href = "/dashboard";
     }
+    // else if(state===false){
+    //   toast.error("Please Register Your Email.........")
+    // }
   }, [state]);
 
   return (

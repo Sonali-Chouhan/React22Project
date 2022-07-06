@@ -2,6 +2,7 @@ import {
   DELETE_USER,
   EDIT_USER,
   LOGIN_USER,
+  LOGOUT_USER,
   REGISTER_USER,
   UPDATE_USER,
 } from "../Actiontype";
@@ -34,5 +35,11 @@ export const UpdateUser = (data) => {
   return {
     type: UPDATE_USER,
     payload:data,
+  };
+};
+export const LogoutUser = () => {
+  return {
+    type:LOGOUT_USER,
+    
   };
 };
