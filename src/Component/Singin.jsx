@@ -29,9 +29,9 @@ const Signin = () => {
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#dd3290" };
   const handleLogin = (data) => {
+    
     dispatch(LoginCreate(data));
     reset();
-    
   };
   // useEffect(() => {
   //   if (state === true) {

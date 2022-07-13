@@ -7,6 +7,7 @@ import {
   UPDATE_USER_UP,
 } from "../Actiontype";
 const initialState = {
+  login:[],
   Register_user: localStorage.getItem("register")
     ? JSON.parse(localStorage.getItem("register"))
     : [],
@@ -39,10 +40,15 @@ const Reducer = (state = initialState, action) => {
            message = true;
         }
       });
+      const ff=state.login
+      ff.push(action.payload)
+      localStorage.setItem("login", JSON.stringify(ff))
+
       return {
         ...state,
         isAuth:Token,
-        message:message 
+        message:message ,
+        login:action.payload
 
       };
     case DELETE_USER_UP:

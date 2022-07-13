@@ -56,4 +56,12 @@
     background-color: aqua;
     border-radius: 10px;
   }
-
+  .search-bar{
+    text-align:right;
+    background-color: #66b3ff;
+    margin-bottom: 10px;
+  }
+  input[type="search"]{
+    padding: 12px 20px;
+    margin:15px 10px;
+  }

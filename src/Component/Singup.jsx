@@ -9,11 +9,11 @@ import {
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { Link } from "react-router-dom";
-//import Radio from "@material-ui/core/Radio";
-//import RadioGroup from "@material-ui/core/RadioGroup";
+import {MenuItem} from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-//import FormControl from "@material-ui/core/FormControl";
-//import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +23,7 @@ const Signup = () => {
   const paperStyle = { padding: "30px 20px", width: 300, margin: "20px auto" };
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#426a9e" };
-  // const marginTop = { marginTop: 5 };
+  const marginTop = { marginTop: 2 };
 
   const {
     register,
@@ -72,12 +72,12 @@ const Signup = () => {
             {...register("name", { required: true })}
           />
           <p className="error"> {errors.name && <p>This is required.</p>}</p>
-          <TextField
+          {/* <TextField
             fullWidth
             label="Last"
             placeholder="Enter your last"
             {...register("last", { required: true })}
-          />
+          /> */}
           <p className="error"> {errors.last && <p>This is required.</p>}</p>
           <TextField
             fullWidth
@@ -105,21 +105,7 @@ const Signup = () => {
           <p className="error">
             {errors.password?.type === "required" && "Password  required"}
           </p>
-          {/* <FormControl component="fieldset" style={marginTop}>
-            <FormLabel component="legend">Gender</FormLabel>
-            <RadioGroup
-              aria-label="gender"
-              name="gender"
-              style={{ display: "initial" }}
-            >
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-            </RadioGroup>
-          </FormControl> */}
+
           <TextField
             fullWidth
             label="Phone Number"
@@ -138,6 +124,19 @@ const Signup = () => {
             {" "}
             {errors.number?.type === "minLength" && "Valid Number"}
           </p>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">User Role</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              // label="User_Role"
+              placeholder="User_Role"
+              {...register("User_Role")}
+              >
+              <MenuItem value="Admin">Admin</MenuItem>
+              <MenuItem value="User">User</MenuItem>
+            </Select>
+          </FormControl>
           <FormControlLabel
             control={<Checkbox name="checkedA" />}
             label="I accept the terms and conditions."
