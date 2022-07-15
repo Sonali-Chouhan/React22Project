@@ -22,23 +22,24 @@ import { DeleteUser, EditUser, UpdateUser } from "../Redux/Action/Action";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "react-toastify";
-import {MenuItem} from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import DeshboardCommon from "./DeshboardCommon"
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 const Usertable = () => {
   //nnn
-  const [record,setrecord]=useState({
-    email:'',
-    password:""
-  })
+  const [record, setrecord] = useState({
+    email: "",
+    password: "",
+  });
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const { register, handleSubmit, setValue, reset } = useForm();
   const state = useSelector((state) => state?.Reducer);
   //nnn
-  const Data=JSON.parse(localStorage.getItem('login'))
+  const Data = JSON.parse(localStorage.getItem("login"));
   const id = useSelector((state) => state?.Reducer?.id);
   const [open, setOpen] = useState(false);
   const handleClickOpen = (id) => {
@@ -88,69 +89,28 @@ const Usertable = () => {
     }
   }, [state?.Updatedata]);
   //nnn
-  useEffect(()=>{
-    const Item=Data.filter((e)=>{
+  useEffect(() => {
+    const Item = Data?.filter((e) => {
       setrecord({
-        email:e.email,
-        password:e.password
-      })
-    })
-
-  },[])
+        email: e.email,
+        password: e.password,
+      });
+    });
+  }, []);
   return (
     <div>
       <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        >
-          <Toolbar>
-            <Typography variant="h6" noWrap component="div">
-              Dashboard
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Common />
+      <DeshboardCommon/>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
-          {/* {
-            state?.Register_user?.filter((e)=>{
-              if(e.email===record.email && e.User_Role==="Admin"){
-                return(
-                 console.log("FDfd")
-                  // <div>
-                  //   <FormControl fullWidth>
-                  // <InputLabel id="demo-simple-select-label">User Role</InputLabel>
-                  // <Select
-                  //   labelId="demo-simple-select-label"
-                  //   id="demo-simple-select"
-                  //   label="Age"
-                   
-                  //   >
-                  //   <MenuItem value={10}>Ten</MenuItem>
-                  //   <MenuItem value={20}>Twenty</MenuItem>
-                  //   <MenuItem value={30}>Thirty</MenuItem>
-                  // </Select>
-                  // </FormControl>
-                  // </div>
-                )
-                
-                
-              }
-              else{
-                console.log("djbjd")
-                return false;
-              }
-            })
-          } */}
+
           <div className="search-bar">
-          <input
-           id="search"
-           type="search"
-           placeholder="search"
-            onChange={(event) => setSearch(event.target.value)}
-          />
+            <input
+              id="search"
+              type="search"
+              placeholder="search"
+              onChange={(event) => setSearch(event.target.value)}
+            />
           </div>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -161,14 +121,22 @@ const Usertable = () => {
                   <TableCell align="right">Email</TableCell>
                   <TableCell align="right">Phone</TableCell>
                   <TableCell align="right">Role</TableCell>
-                  <TableCell align="right">Delete</TableCell>
-                  <TableCell align="right">Edit</TableCell>
+                  {
+                    Data[0].User_Role==="Admin" ?
+                   <>
+                    <TableCell align="right">Delete</TableCell>
+                    <TableCell align="right">Edit</TableCell>
+                   </>
+                    :
+                    ""
+                  }
+                  
                 </TableRow>
               </TableHead>
               <TableBody>
                 {state?.Register_user?.filter((post) => {
-                  if(post?.email===record?.email){
-                    return false
+                  if (post?.email === record?.email) {
+                    return false;
                   }
                   if (search === "") {
                     return post;
@@ -186,23 +154,30 @@ const Usertable = () => {
                     <TableCell align="right">{row.email}</TableCell>
                     <TableCell align="right">{row.number}</TableCell>
                     <TableCell align="right">{row.User_Role}</TableCell>
-                    <TableCell align="right">
-                      <Button
-                        onClick={() => handleDelete(index)}
-                        color="primary"
-                      >
-                        <DeleteOutlineIcon />
-                      </Button>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Button
-                        onClick={() => handleClickOpen(index)}
-                        color="secondary"
-                        aria-label="edit"
-                      >
-                        <EditIcon />
-                      </Button>
-                    </TableCell>
+                   {
+                     Data[0].User_Role==="Admin" ?
+                     <>
+                     <TableCell align="right">
+                     <Button
+                       onClick={() => handleDelete(index)}
+                       color="primary"
+                     >
+                       <DeleteOutlineIcon />
+                     </Button>
+                   </TableCell>
+                   <TableCell align="right">
+                     <Button
+                       onClick={() => handleClickOpen(index)}
+                       color="secondary"
+                       aria-label="edit"
+                     >
+                       <EditIcon />
+                     </Button>
+                   </TableCell>
+                     </>
+                     :
+                     ""
+                   }
                   </TableRow>
                 ))}
               </TableBody>
@@ -216,11 +191,11 @@ const Usertable = () => {
                   placeholder="Enter your name"
                   {...register("name", { required: true })}
                 />
-                <TextField
+                {/* <TextField
                   fullWidth
                   placeholder="Enter your last"
                   {...register("last", { required: true })}
-                />
+                /> */}
                 <TextField
                   fullWidth
                   placeholder="Enter your email"
@@ -236,6 +211,20 @@ const Usertable = () => {
                   placeholder="Enter your password"
                   {...register("password", { required: true })}
                 />
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    User Role
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    placeholder="User_Role"
+                    {...register("User_Role")}
+                  >
+                    <MenuItem value="Admin">Admin</MenuItem>
+                    <MenuItem value="User">User</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                   fullWidth
                   placeholder="Enter your phone number"

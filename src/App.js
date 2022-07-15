@@ -9,6 +9,7 @@ import PagenotFound from "./Component/PagenotFound";
 import Usertable from "./Component/Usertable";
 import About from "./Component/About";
 import { useDispatch, useSelector } from "react-redux";
+import UserProfile from "./Component/UserProfile";
 const Singin = React.lazy(() => import("./Component/Singin"));
 const Singup = React.lazy(() => import("./Component/Singup"));
 const Dashboard = React.lazy(() => import("./Component/Dashboard"));
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/userlist" element={<Usertable />} />
               <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<UserProfile/>} />
              <Route path="*" element={<PagenotFound />} />
             </Routes>
           ) : (

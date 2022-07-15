@@ -7,8 +7,12 @@ import {
   TextField,
   Button,
 } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
+import { MenuItem } from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import { Link, useNavigate } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useForm } from "react-hook-form";
 import { MdLibraryAddCheck } from "react-icons/md";
@@ -29,7 +33,6 @@ const Signin = () => {
   const headerStyle = { margin: 0 };
   const avatarStyle = { backgroundColor: "#dd3290" };
   const handleLogin = (data) => {
-    
     dispatch(LoginCreate(data));
     reset();
   };
@@ -37,7 +40,7 @@ const Signin = () => {
   //   if (state === true) {
   //     toast.success("User_Singin ......");
   //   }
-    
+
   //   // else if(state===false){
   //   //   toast.error("Please Register Your Email.........")
   //   // }
@@ -83,6 +86,18 @@ const Signin = () => {
             {errors.password?.type === "required" && "Password  required"}
           </p>
 
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">User Role</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              placeholder="User_Role"
+              {...register("User_Role")}
+            >
+              <MenuItem value="Admin">Admin</MenuItem>
+              <MenuItem value="User">User</MenuItem>
+            </Select>
+          </FormControl>
           <FormControlLabel
             control={<Checkbox name="checkedA" />}
             label="I accept the terms and conditions."

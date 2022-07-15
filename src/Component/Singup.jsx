@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import { Link } from "react-router-dom";
-import {MenuItem} from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -129,10 +129,9 @@ const Signup = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              // label="User_Role"
               placeholder="User_Role"
               {...register("User_Role")}
-              >
+            >
               <MenuItem value="Admin">Admin</MenuItem>
               <MenuItem value="User">User</MenuItem>
             </Select>

@@ -10,6 +10,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { MdDashboard } from "react-icons/md";
 import { ImTable2 } from "react-icons/im";
+import {ImProfile} from "react-icons/im"
 import { SiAboutdotme } from "react-icons/si";
 import { useDispatch } from "react-redux";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -67,6 +68,17 @@ const Common = () => {
                 <ListItemText>
                   {" "}
                   <Link to="/about">About-Us</Link>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ImProfile />
+                </ListItemIcon>
+                <ListItemText>
+                  {" "}
+                  <Link to="/profile">Profile</Link>
                 </ListItemText>
               </ListItemButton>
             </ListItem>

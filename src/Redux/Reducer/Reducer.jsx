@@ -7,7 +7,7 @@ import {
   UPDATE_USER_UP,
 } from "../Actiontype";
 const initialState = {
-  login:[],
+  // login:[],
   Register_user: localStorage.getItem("register")
     ? JSON.parse(localStorage.getItem("register"))
     : [],
@@ -33,16 +33,18 @@ const Reducer = (state = initialState, action) => {
       record?.forEach((element) => {
         if (
           element.password === action.payload.password &&
-          element.email === action.payload.email
+          element.email === action.payload.email && 
+          element.User_Role===action.payload.User_Role
         ) {
            Token = "gsadhy3724351/323knmds./309023473247";
            localStorage.setItem("token", JSON.stringify(Token));
            message = true;
+           const login_user=[]
+           login_user.push(action.payload)
+           localStorage.setItem("login", JSON.stringify(login_user))
         }
       });
-      const ff=state.login
-      ff.push(action.payload)
-      localStorage.setItem("login", JSON.stringify(ff))
+      
 
       return {
         ...state,
