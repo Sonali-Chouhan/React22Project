@@ -135,9 +135,9 @@ const Usertable = () => {
               </TableHead>
               <TableBody>
                 {state?.Register_user?.filter((post) => {
-                  if (post?.email === record?.email) {
-                    return false;
-                  }
+                  // if (post?.email === record?.email) {
+                  //   return false;
+                  // }
                   if (search === "") {
                     return post;
                   } else if (
@@ -145,8 +145,16 @@ const Usertable = () => {
                   ) {
                     return post;
                   }
-                }).map((row, index) => (
-                  <TableRow key={index}>
+                }).map((row, index) => 
+                
+                   
+               
+                {
+                  if(row?.email===record?.email){
+                    return false;
+                  }
+                  return(
+                    <TableRow key={index}>
                     <TableCell component="th" scope="row">
                       {index}
                     </TableCell>
@@ -179,7 +187,8 @@ const Usertable = () => {
                      ""
                    }
                   </TableRow>
-                ))}
+                  )
+                })}
               </TableBody>
             </Table>
           </TableContainer>
